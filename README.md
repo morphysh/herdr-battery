@@ -58,7 +58,7 @@ Push to a public GitHub repo, add the topic `herdr-plugin`, and it gets indexed
 by the [marketplace](https://herdr.dev/plugins) within ~30 minutes. Others install with:
 
 ```sh
-herdr plugin install <owner>/herdr-plugin-battery
+herdr plugin install morphysh/herdr-battery
 ```
 
 and point `tab_bar_right` at the installed path (or keep their own copy of
