@@ -1,0 +1,20 @@
+id = "rock.battery"
+name = "Battery"
+version = "0.1.0"
+min_herdr_version = "0.9.0"
+description = "Laptop battery status in the herdr tab bar, plus a details popup (Linux/sysfs)"
+platforms = ["linux"]
+
+[[actions]]
+id = "details"
+title = "Battery details"
+contexts = ["workspace"]
+command = ["sh", "open-details.sh"]
+
+[[panes]]
+id = "details"
+title = "Battery"
+placement = "popup"
+width = "50%"
+height = 14
+command = ["sh", "battery-details.sh"]
