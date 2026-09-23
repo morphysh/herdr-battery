@@ -6,7 +6,7 @@ System status for [herdr](https://herdr.dev): battery, CPU, and memory.
   - `⚡87%` charging (plugged in) / `🔋87%` on battery / `🔌100%` plugged in but held/full,
     `🔋15%!` low battery (below 20% on battery)
   - `📈12%` CPU busy across all cores (0.5s sampling window)
-  - `🧠62%` memory in use
+  - `🐏62%` memory in use
   - Rendered by herdr's `command` status widgets; they resolve on the herdr *server*,
     so `herdr --remote` shows the remote machine's metrics.
 - **System report popup** — `prefix+shift+b` (configurable): battery health, cycles,

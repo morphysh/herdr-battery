@@ -1,5 +1,5 @@
 #!/bin/sh
-# Memory usage for the herdr tab bar: 🧠62%
+# Memory usage for the herdr tab bar: 🐏62%  (RAM = Ram, the pun)
 #
 # Used% = (MemTotal - MemAvailable) / MemTotal from /proc/meminfo.
 # Linux only; empty exit clears the tab bar entry elsewhere.
@@ -12,5 +12,5 @@ awk '/^MemTotal:/      { t = $2 }
          if (t <= 0) exit
          used = t - a
          if (used < 0) used = 0
-         printf "🧠%d%%", 100 * used / t
+         printf "🐏%d%%", 100 * used / t
      }' /proc/meminfo
