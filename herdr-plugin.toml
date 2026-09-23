@@ -1,8 +1,8 @@
 id = "rock.battery"
 name = "Battery"
-version = "0.1.0"
+version = "0.2.0"
 min_herdr_version = "0.9.0"
-description = "Laptop battery status in the herdr tab bar, plus a details popup (Linux/sysfs)"
+description = "Laptop battery, CPU, and memory status in the herdr tab bar, plus a full system report popup (Linux sysfs + /proc, zero dependencies)"
 platforms = ["linux"]
 
 [[actions]]
@@ -13,8 +13,8 @@ command = ["sh", "open-details.sh"]
 
 [[panes]]
 id = "details"
-title = "Battery"
+title = "System"
 placement = "popup"
 width = "50%"
-height = 14
-command = ["sh", "battery-details.sh"]
+height = 20
+command = ["sh", "sys-details.sh"]
