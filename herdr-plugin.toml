@@ -1,6 +1,6 @@
 id = "rock.battery"
 name = "Battery"
-version = "0.2.0"
+version = "0.3.0"
 min_herdr_version = "0.9.0"
 description = "Laptop battery, CPU, and memory status in the herdr tab bar, plus a full system report popup (Linux sysfs + /proc, zero dependencies)"
 platforms = ["linux"]
@@ -18,3 +18,9 @@ placement = "popup"
 width = "50%"
 height = 20
 command = ["sh", "sys-details.sh"]
+
+[[link_handlers]]
+id = "battery-status"
+title = "Open system report"
+pattern = "^herdr-battery://"
+action = "details"

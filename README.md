@@ -9,9 +9,12 @@ System status for [herdr](https://herdr.dev): battery, CPU, and memory.
   - `🐏62%` memory in use
   - Rendered by herdr's `command` status widgets; they resolve on the herdr *server*,
     so `herdr --remote` shows the remote machine's metrics.
-- **System report popup** — `prefix+shift+b` (configurable): battery health, cycles,
-  power draw and time-to-full/empty, CPU usage/load/temperature, RAM+swap, disk
-  usage, uptime.
+- **System report popup** — `prefix+shift+b` or direct `ctrl+alt+b` (configurable):
+  battery health, cycles, power draw and time-to-full/empty, CPU usage/load/
+  temperature, RAM+swap, disk usage, uptime.
+- **Clickable battery in the prompt** — `battery-link.sh` emits an OSC 8 hyperlink;
+  inside herdr panes, **Ctrl+click** routes to the `details` action via
+  `[[link_handlers]]` and opens the popup. Inert in other terminals.
 
 Linux only (reads `/sys/class/power_supply` and `/proc`). No dependencies beyond
 POSIX `sh` + `awk` + `df`.
@@ -58,8 +61,24 @@ plugin roots are not stable paths for third-party installs).
 | `battery-status.sh` | Tab bar battery line (`command` widget)               |
 | `cpu-status.sh`     | Tab bar CPU busy% (`command` widget)                  |
 | `mem-status.sh`     | Tab bar memory used% (`command` widget)               |
+| `battery-link.sh`   | OSC 8 hyperlink for shell prompts (Ctrl+click in herdr)  |
 | `sys-details.sh`    | Full system report popup (pane entrypoint `details`)  |
 | `open-details.sh`   | Action entrypoint: opens the popup via `HERDR_BIN_PATH` |
+
+## Prompt integration (optional)
+
+Make the battery clickable in your shell prompt. Example for starship:
+
+```toml
+format = "[$directory$git_branch$git_status]($style)$custom$character"
+
+[custom.herdr_battery]
+command = "~/Projects/herdr-battery/battery-link.sh"
+when = "true"
+format = "[$output]($style) "
+```
+
+Inside herdr, Ctrl+click the icon to open the system report popup.
 
 ## Tuning
 
@@ -69,6 +88,7 @@ plugin roots are not stable paths for third-party installs).
 
 ## Changelog
 
+- **0.3.0** — clickable OSC 8 battery link for prompts via `[[link_handlers]]`.
 - **0.2.0** — CPU and memory tab bar widgets; popup becomes a full system
   report (CPU/load/temp, RAM/swap, disk, uptime).
 - **0.1.0** — battery tab bar widget + details popup.
